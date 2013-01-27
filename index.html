@@ -58,8 +58,10 @@
 			var symbols = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ь','Ъ','Ы','Э','Ю','Я',
 						   '1','2','3','4','5','6','7','8','9'];
 
-			var fontSize = $(window).height() / 1.1;
-			$('#canvas').css('font-size', fontSize + 'px');
+			var resize = function () {
+				var fontSize = $(window).height() / 1.1;
+				$('#canvas').css('font-size', fontSize + 'px');
+			}
 
 			var handler = function () {
 				var symbol = symbols[Math.floor(Math.random() * symbols.length)];
@@ -74,6 +76,11 @@
 				}
 			});
 
+			$(window).resize(function() {
+				resize();
+			});
+
+			resize();
 			handler();
 		});
 	</script>
