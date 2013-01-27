@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Учим буквы и цифры</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		#canvas {
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			width: 100%;
+
+			overflow: hidden;
+			text-align: center;
+
+			color: #053A78;
+			background-color: #FFECB3;
+
+			font-family: sans;
+		}
+	</style>
+	<link rel="icon" type="image/x-icon" href="favicon.png" />
+</head>
+<body>
+
+	<div id="canvas">A</div>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		$(function() {
+
+			var symbols = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ь','Ъ','Ы','Э','Ю','Я',
+						   '1','2','3','4','5','6','7','8','9'];
+
+			var fontSize = $(window).height() / 1.1;
+			$('#canvas').css('font-size', fontSize + 'px');
+
+			var handler = function () {
+				var symbol = symbols[Math.floor(Math.random() * symbols.length)];
+				$('#canvas').text(symbol);
+			};
+
+			$('#canvas').click(handler);
+			$("body").keypress(function(event) {
+				if (event.which == 13 || event.which == 32) {
+					event.preventDefault();
+					handler();
+				}
+			});
+
+			handler();
+		});
+	</script>
+</body>
+</html>
